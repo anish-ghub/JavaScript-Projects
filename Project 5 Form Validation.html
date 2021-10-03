@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 5 : Form Validation </title>
+
+
+    <style>
+
+        body{
+
+            background-color: darkslateblue;
+
+            /* Otherwise align-items Not Work */
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .container{
+
+            background-color: white;
+            padding: 50px;
+
+        }
+        form{
+
+            display: flex;
+            flex-direction: column;
+
+        }
+        h1{
+
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: underline;
+            color: rgb(209, 107, 24);
+            margin-top: 5px;
+
+        }
+        input{
+
+            padding: 10px;
+            font-size: 1.5rem;
+            outline: none;
+
+        }
+        .error{
+
+            font-size: 1.5rem;
+            color: red;
+
+        }
+        input[type=submit]{
+
+           background-color: teal;
+           color: white;
+           cursor: pointer;
+           border: 2px solid rgb(202, 113, 11);
+
+        }
+        
+
+        
+
+    </style>
+
+      
+
+</head>
+<body>
+    
+
+    <div class="container">
+
+
+        <h1>Login</h1>
+
+
+        <!--
+           return validateForm( true-Form Submit / false-Form Not Submit )  
+        -->
+        <form onsubmit="return validateForm()"> 
+
+
+            <input type="text"     placeholder="User Name" id="user">
+            <p id="userError"      class="error"></p>
+
+            <input type="password" placeholder="Password"  id="pass">
+            <p id="passError"      class="error"></p>
+
+            <input type="submit">
+
+
+        </form>
+
+
+    </div>
+
+
+
+   
+
+
+    <script>
+
+
+
+
+
+        let un = document.getElementById("user");
+        let pw = document.getElementById("pass");
+
+        // If Flag is 1 - return true / 0 - return false
+        let flag;
+
+
+
+        function validateForm(){
+
+
+
+
+
+            // User Name:
+
+            //User Name is Empty
+            if(un.value == ""){
+                document.getElementById("userError").innerHTML = "User Name is Empty";
+
+                flag = 0;
+            }
+            //User Name is Lesser Than 
+            else if(un.value.length < 3){
+                document.getElementById("userError").innerHTML = "Minimum 3 Character Required";
+                
+                flag = 0;
+            }
+            else{
+                // If No Error Error Message Empty:
+                document.getElementById("userError").innerHTML = "";
+
+                flag = 1;
+            }
+
+
+
+
+
+            // Password:
+
+            // Password is Empty
+            if(pw.value == ""){
+                document.getElementById("passError").innerHTML = "Password is Empty";
+
+                flag = 0;
+            }
+            else{
+                document.getElementById("passError").innerHTML = "";
+
+                // If Only Pass Given But Not User Name Then It Stop from Submit
+                this.flag = 1;
+            }
+
+
+
+
+
+
+            if(flag == 1){
+                return true;// Form Submit
+            }
+            else{
+                return false;//Flag 0: Form Not Submit
+            }
+           
+
+
+
+
+        }
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

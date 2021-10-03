@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2 : Word & Character Count</title>
+
+
+    <style>
+
+        body{
+            padding: 50px 100px;
+        }
+
+        h1{
+
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 500;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            background-color: teal;
+        }
+        textarea{
+            width: 100%;
+            border: 2px solid darkslateblue;
+            font-size: 1.5rem;
+        }
+        p{
+            font-size: 2rem;
+            font-weight: 400;
+            text-align: center;
+            background-color: teal;
+            color: white;
+        }
+
+        
+    </style>
+   
+
+</head>
+<body>
+    
+    
+
+    <h1>Character and Word Counter</h1>
+
+    <textarea  id="txtarea" cols="30" rows="10"></textarea>
+
+    <p>
+        <span id="char">0</span> Characters and
+        <span id="word">0</span> Words
+    </p>
+
+
+
+
+
+    <script>
+
+
+        let txtarea = document.getElementById("txtarea");
+
+
+        // input Event - Detect any kind of Change
+        txtarea.addEventListener('input',function(){
+
+
+            // Character Count:
+
+            // Get What is Written on TextArea
+            let char = this.value;
+
+            // Length of the Input including Space
+            let char_cnt = char.length;
+
+            // Directly Update
+            document.getElementById("char").innerHTML = char_cnt; 
+
+
+
+
+
+
+            // Word Count:
+
+            // Space(Fisrt & Last) Not considered as Word - trim()
+            let word = char.trim();
+
+            // Split where it find ('Space') & Store into Array
+            word = word.split(" ");
+
+            // But It consider Extra Space as Word
+            // filer(Pass Every Element)
+            let cleanWords = word.filter(function(elm){
+
+                // Return Those Who are Not Null/Empty
+                return elm != "";
+
+            });
+
+            // Change By Adding Length
+            document.getElementById("word").innerHTML = cleanWords.length;
+
+
+        });
+       
+
+    </script>
+
+
+
+</body>
+</html>

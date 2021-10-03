@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 4 : Sticky Nav Bar</title>
+
+
+    <style>
+
+        body{
+
+            /* So that Scroll Happens */
+            height: 3000px;
+
+            /* So that Child can be Sticky */
+            position: relative;
+
+            /* So that From Top 200px Gap */
+            margin-top: 200px;
+            
+        }
+        #nav-bar{
+        
+            display: flex;
+            justify-content: center;
+            background-color: #581845;
+        }
+        li{
+            list-style-type: none;
+            font-size: 1.5rem;
+            padding: 20px;
+            color: white;
+            cursor: pointer;
+            
+
+        }
+        h1{
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: underline;
+        }
+        p{
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .sticky{
+
+            position: sticky;
+            top: 0px;
+            width: 100%;
+        }
+        
+
+    </style>
+
+      
+
+</head>
+<body>
+    
+    <nav id="nav-bar">
+
+        
+        <li>Home</li>
+        <li>Product</li>
+        <li>Client</li>
+        <li>Contact Us</li>
+        <li>Login</li>
+        
+
+    </nav>
+
+    <h1>Sticky Nav Bar</h1>
+
+    <p>Nav Bar will Stick On Top When Scrolled</p>
+    
+    
+
+
+    <script>
+
+
+        // Add (.sticky)  on (#nav-bar) It will be Sticky Navbar
+
+
+        window.addEventListener('scroll', function(){
+
+
+            // After 200px Scroll .Sticky add To #nav-bar
+
+            let nav = document.getElementById("nav-bar");
+
+
+            // If In Y axis 200px Scrolled:
+            if(pageYOffset >= 200){
+
+                // Add Class
+                nav.classList.add('sticky');
+
+            }
+            else{
+
+                // Lesser than 200px Original Position:Remove .sticky
+                nav.classList.remove('sticky');
+
+            }
+           
+
+        });
+
+        
+    </script>
+
+
+</body>
+</html>

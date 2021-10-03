@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3 : Background Changer</title>
+
+
+    <style>
+
+        body{
+            padding: 50px 100px;
+        }
+        h2{
+            font-size: 2.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: underline;
+            text-align: center;
+        }
+        p{
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        #container{
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: flex-end;
+        }
+        .btn{
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            border: 2px solid rgb(235, 103, 15);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #white{
+            background-color: #F2E4E4;
+        }
+        #pink{
+            background-color: #581845;
+        }
+        #blue{
+            background-color: #1A086B;
+        }
+        #black{
+            background-color: #060606;
+        }
+
+    </style>
+
+      
+
+</head>
+<body>
+    
+    
+    <div id="container">
+
+        <div class="btn" id="white" onclick="changeBg('#F2E4E4')"></div>
+        <div class="btn" id="pink" onclick="changeBg('#581845')"></div>
+        <div class="btn" id="blue" onclick="changeBg('#1A086B')"></div>
+        <div class="btn" id="black" onclick="changeBg('#060606')"></div>
+
+    </div>
+
+    <h2 class="txt">Background Changer</h2>
+    <p class="txt">Text Color Changes When Background Color Black</p>
+
+
+
+    <script>
+
+
+
+
+        function changeBg(color){
+
+
+            document.body.style.backgroundColor = color;
+
+
+
+            // If Bg is Black then Text is Not Visible:
+            let text = document.getElementsByClassName("txt");//Array
+
+
+            if(color == '#060606'){
+
+                for(let elm of text){
+                    elm.style.color = "white";
+                }
+
+            }
+            else{
+
+                for(let elm of text){
+                    elm.style.color = "black";
+                }
+
+            }
+
+
+
+        }
+
+    
+
+
+        
+    </script>
+
+
+</body>
+</html>

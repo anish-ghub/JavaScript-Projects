@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 7 Stopwatch</title>
+
+
+    <style>
+
+
+
+        body{
+            background-color: #581845 ;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            color: silver;
+
+        }
+        .digit{
+            font-size: 8rem;
+        }
+        .txt{
+            font-size: 3rem;
+        }
+        .btn-container{
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn{
+            padding: 7px 25px;
+            font-size: 2rem;
+            margin: 0px 10px;
+            color: white;
+            border: 0px;
+            cursor: pointer;
+        }
+        #start{
+            background-color: darkslategray;
+        }
+        #stop{  
+            background-color: darkslateblue;
+        }
+        #reset{
+            background-color: darksalmon;
+        }
+        
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+    
+
+
+    <div class="container">
+
+
+
+
+        <div class="time">
+
+
+            <span class="digit" id="hr">00</span>
+            <span class="txt">Hr</span>
+
+            <span class="digit" id="min">00</span>
+            <span class="txt">Min</span>
+
+            <span class="digit" id="sec">00</span>
+            <span class="txt">Sec</span>
+
+            <span class="digit" id="count">00</span>
+            
+
+        </div>
+
+
+
+        <div class="btn-container">
+
+            <button class="btn" id="start" onclick="start()">
+                Start
+            </button>
+            <button class="btn" id="stop" onclick="stop()">
+                Stop
+            </button>
+            <button class="btn" id="reset" onclick="reset()">
+                Reset
+            </button>
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+
+        let hr = 0;
+        let min = 0;
+        let sec = 0;
+        let count = 0;
+        let timer = false;//Clock Start or Stop
+
+
+
+        function start(){
+
+            timer = true;
+            stopWatch();
+
+        }
+        function stop(){
+
+            timer = false;
+
+        }
+        function reset(){
+
+            timer = false;
+
+            
+
+            document.getElementById("hr").innerHTML = "00";
+            document.getElementById("min").innerHTML = "00";
+            document.getElementById("sec").innerHTML = "00";
+            document.getElementById("count").innerHTML = "00";
+
+        }
+
+
+
+        function stopWatch(){
+
+
+            if(timer == true){
+
+
+                count = count + 1;
+
+                if(count == 100){
+                    sec = sec + 1;
+                    count = 0;
+                }
+
+                if(sec == 60){
+                    min = min + 1;
+                    sec = 0;
+                }
+
+                if(min == 60){
+                    hr = hr + 1;
+                    min = 0;
+                    sec = 0;
+                }
+
+
+
+                // Double Digit
+                let hr_str = hr;
+                let min_str = min;
+                let sec_str = sec;
+                let count_str = count;
+
+                if(hr < 10){
+                    hr_str = "0" + hr_str;
+                }
+                if(min < 10){
+                    min_str = "0" + min_str;
+                }
+                if(sec < 10){
+                    sec_str = "0" + sec_str;
+                }
+                if(count < 10){
+                    count_str = "0" + count_str;
+                }
+
+
+
+
+                document.getElementById("count").innerHTML = count_str;
+                document.getElementById("sec").innerHTML = sec_str;
+                document.getElementById("min").innerHTML = min_str;
+                document.getElementById("hr").innerHTML = hr_str;
+
+
+                setTimeout("stopWatch()" ,10);
+
+
+            }
+
+
+        }
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
